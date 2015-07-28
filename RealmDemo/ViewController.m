@@ -14,7 +14,7 @@
 #import "Dog.h"
 
 @interface ViewController ()
-
+@property (strong, nonatomic)NSNumber *IDCard;
 @end
 
 @implementation ViewController
@@ -67,9 +67,26 @@
         make.height.equalTo(@44);
     }];
     
+    
+//    NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+//    RLMRealm *r = [RLMRealm realmWithPath:[NSString stringWithFormat:@"%@/pets.realm",path]];
+//    [r beginWriteTransaction];
+//    [r addObject:[[Dog alloc] init]];
+//    [r commitWriteTransaction];
+    
     [[insertButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        RLMResults *results = [Person allObjects];
+        for (Person *person in results) {
+            NSInteger a = [person.IDCard integerValue];
+            self.IDCard = [NSNumber numberWithInteger:a];
+        }
+        
         Dog *dog = [[Dog alloc] init];
         Person *person = [[Person alloc] init];
+        NSInteger tmp = [self.IDCard integerValue];
+        tmp ++;
+        self.IDCard = [NSNumber numberWithInteger:tmp];
+        person.IDCard = [self.IDCard stringValue];
         person.name = nameText.text;
         person.age = ageText.text;
         person.dog = dog;
@@ -78,6 +95,15 @@
         [realm beginWriteTransaction];
         [realm addObject:person];
         [realm commitWriteTransaction];
+    }];
+    
+    // 数据库迁移（增加desc字段）
+    [RLMRealm setSchemaVersion:1 forRealmAtPath:[RLMRealm defaultRealmPath] withMigrationBlock:^(RLMMigration *migration, NSUInteger oldSchemaVersion) {
+        if (oldSchemaVersion < 1) {
+            [migration enumerateObjects:Person.className block:^(RLMObject *oldObject, RLMObject *newObject) {
+                newObject[@"desc"] = [NSString stringWithFormat:@"%@-%@-%@",oldObject[@"IDCard"],oldObject[@"name"],oldObject[@"age"]];
+            }];
+        }
     }];
     
     [[queryButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {

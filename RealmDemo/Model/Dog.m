@@ -28,7 +28,7 @@
 //}
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"Dog description:%@\n name: %@\ncolor: %@\n",[super description], self.name, self.color];
+    return [NSString stringWithFormat:@"Dog description:\n name: %@\ncolor: %@\n", self.name, self.color];
 }
 
 @end

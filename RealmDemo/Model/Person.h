@@ -10,8 +10,10 @@
 @class Dog;
 @interface Person : RLMObject
 
+@property NSString *IDCard;
 @property NSString *name;
 @property NSString *age;
+@property NSString *desc;
 @property Dog *dog;
 
 @end

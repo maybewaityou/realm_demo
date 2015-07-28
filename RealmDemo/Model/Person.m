@@ -25,12 +25,16 @@
 //+ (NSArray *)ignoredProperties
 //{
 //    return @[];
-//}
+//
+
++ (NSString *)primaryKey
+{
+    return @"IDCard";
+}
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"Person description:%@\n name: %@\nage: %@\ndog: %@\n",[super description], self.name, self.age, self.dog];
+    return [NSString stringWithFormat:@"Person description:\n IDCard: %@\nname: %@\nage: %@\ndesc: %@\ndog: %@\n",self.IDCard, self.name, self.age, self.desc, self.dog];
 }
-
 
 
 @end
