@@ -31,10 +31,10 @@
 {
     return @"IDCard";
 }
+
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"Person description:\n IDCard: %@\nname: %@\nage: %@\ndesc: %@\ndog: %@\n",self.IDCard, self.name, self.age, self.desc, self.dog];
+    return [NSString stringWithFormat:@"Person description:\n IDCard: %@\nname: %@\nage: %@\ndesc: %@\nemail: %@\ndog: %@\n", self.IDCard, self.name, self.age, self.desc, self.email, self.dog];
 }
-
 
 @end

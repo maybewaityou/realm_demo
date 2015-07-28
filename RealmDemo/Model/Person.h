@@ -13,7 +13,10 @@
 @property NSString *IDCard;
 @property NSString *name;
 @property NSString *age;
+// v1
 @property NSString *desc;
+// v2
+@property NSString *email;
 @property Dog *dog;
 
 @end

@@ -90,6 +90,8 @@
         person.name = nameText.text;
         person.age = ageText.text;
         person.dog = dog;
+        person.desc = [NSString stringWithFormat:@"%@-%@-%@",person.IDCard,person.name,person.age];
+        person.email = [NSString stringWithFormat:@"%@ %d @gmail.com",@"4601191",arc4random()];
         
         RLMRealm *realm = [RLMRealm defaultRealm];
         [realm beginWriteTransaction];
@@ -98,10 +100,17 @@
     }];
     
     // 数据库迁移（增加desc字段）
-    [RLMRealm setSchemaVersion:1 forRealmAtPath:[RLMRealm defaultRealmPath] withMigrationBlock:^(RLMMigration *migration, NSUInteger oldSchemaVersion) {
+    [RLMRealm setSchemaVersion:2 forRealmAtPath:[RLMRealm defaultRealmPath] withMigrationBlock:^(RLMMigration *migration, NSUInteger oldSchemaVersion) {
         if (oldSchemaVersion < 1) {
             [migration enumerateObjects:Person.className block:^(RLMObject *oldObject, RLMObject *newObject) {
                 newObject[@"desc"] = [NSString stringWithFormat:@"%@-%@-%@",oldObject[@"IDCard"],oldObject[@"name"],oldObject[@"age"]];
+            }];
+        }
+        
+        if (oldSchemaVersion < 2) {
+            NSLog(@"=== old === %ld ",oldSchemaVersion);
+            [migration enumerateObjects:Person.className block:^(RLMObject *oldObject, RLMObject *newObject) {
+                newObject[@"email"] = [NSString stringWithFormat:@"%@ %d @gmail.com",@"4601191",arc4random()];
             }];
         }
     }];
