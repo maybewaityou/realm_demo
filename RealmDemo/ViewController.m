@@ -11,6 +11,7 @@
 #import "ReactiveCocoa.h"
 #import <Realm/Realm.h>
 #import "Person.h"
+#import "Dog.h"
 
 @interface ViewController ()
 
@@ -67,9 +68,11 @@
     }];
     
     [[insertButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        Dog *dog = [[Dog alloc] init];
         Person *person = [[Person alloc] init];
         person.name = nameText.text;
         person.age = ageText.text;
+        person.dog = dog;
         
         RLMRealm *realm = [RLMRealm defaultRealm];
         [realm beginWriteTransaction];

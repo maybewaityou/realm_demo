@@ -16,7 +16,8 @@
 		60142E8D1B67069300918F4B /* RealmDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 60142E8C1B67069300918F4B /* RealmDemoTests.m */; };
 		60142E991B6708A700918F4B /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 60142E981B6708A700918F4B /* libc++.dylib */; };
 		60142F8E1B670EBB00918F4B /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60142F8D1B670EBB00918F4B /* Realm.framework */; };
-		60142F911B670F8900918F4B /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 60142F901B670F8900918F4B /* Person.m */; };
+		60142F951B6725B800918F4B /* Dog.m in Sources */ = {isa = PBXBuildFile; fileRef = 60142F941B6725B800918F4B /* Dog.m */; };
+		60142F991B67261B00918F4B /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 60142F981B67261B00918F4B /* Person.m */; };
 		75E3E84E839C574B062B1AAE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 01B2D1AE5D297075C5B1DBF4 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -48,8 +49,10 @@
 		60142E8C1B67069300918F4B /* RealmDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RealmDemoTests.m; sourceTree = "<group>"; };
 		60142E981B6708A700918F4B /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 		60142F8D1B670EBB00918F4B /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
-		60142F8F1B670F8900918F4B /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
-		60142F901B670F8900918F4B /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
+		60142F931B6725B800918F4B /* Dog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Dog.h; path = Model/Dog.h; sourceTree = "<group>"; };
+		60142F941B6725B800918F4B /* Dog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Dog.m; path = Model/Dog.m; sourceTree = "<group>"; };
+		60142F971B67261B00918F4B /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Person.h; path = Model/Person.h; sourceTree = "<group>"; };
+		60142F981B67261B00918F4B /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Person.m; path = Model/Person.m; sourceTree = "<group>"; };
 		A3EE331BF220DF5452661F1E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -98,12 +101,11 @@
 		60142E6F1B67069200918F4B /* RealmDemo */ = {
 			isa = PBXGroup;
 			children = (
+				60142F961B6725C000918F4B /* Model */,
 				60142E741B67069200918F4B /* AppDelegate.h */,
 				60142E751B67069200918F4B /* AppDelegate.m */,
 				60142E771B67069200918F4B /* ViewController.h */,
 				60142E781B67069200918F4B /* ViewController.m */,
-				60142F8F1B670F8900918F4B /* Person.h */,
-				60142F901B670F8900918F4B /* Person.m */,
 				60142E7A1B67069200918F4B /* Main.storyboard */,
 				60142E7D1B67069200918F4B /* Images.xcassets */,
 				60142E7F1B67069200918F4B /* LaunchScreen.xib */,
@@ -136,6 +138,17 @@
 				60142E8B1B67069300918F4B /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		60142F961B6725C000918F4B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				60142F931B6725B800918F4B /* Dog.h */,
+				60142F941B6725B800918F4B /* Dog.m */,
+				60142F971B67261B00918F4B /* Person.h */,
+				60142F981B67261B00918F4B /* Person.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 		A2D8A97E380C687D1C54DF19 /* Pods */ = {
@@ -293,7 +306,8 @@
 			files = (
 				60142E791B67069200918F4B /* ViewController.m in Sources */,
 				60142E761B67069200918F4B /* AppDelegate.m in Sources */,
-				60142F911B670F8900918F4B /* Person.m in Sources */,
+				60142F991B67261B00918F4B /* Person.m in Sources */,
+				60142F951B6725B800918F4B /* Dog.m in Sources */,
 				60142E731B67069200918F4B /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
